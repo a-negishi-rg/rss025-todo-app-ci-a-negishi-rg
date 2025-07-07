@@ -3,7 +3,9 @@ import TaskList from "./pages/TaskList.vue";
 
 const routes = [
     {
-      path: '/tasks', component: TaskList}
+      path: '/:pathMatch(.*)*', 
+      component: TaskList
+    }
 ];
 
 const router = createRouter({

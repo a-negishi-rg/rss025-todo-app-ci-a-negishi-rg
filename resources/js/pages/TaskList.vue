@@ -35,10 +35,10 @@ const tasks = ref([
                 <th class="p-4 overflow-hidden whitespace-nowrap">担当者</th>
             </tr>
             <tr v-for="task in tasks" class="text-left border-b-2 border-gray-300 hover:bg-(--color-sub)">
-                <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.id }}</td>
-                <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.title }}</td>
-                <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.content }}</td>
-                <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.person_in_charge }}</td>
+                <td class="p-4 overflow-hidden whitespace-nowrap"> {{ task.id }} </td>
+                <td class="p-4 overflow-hidden whitespace-nowrap"> {{ task.title }} </td>
+                <td class="p-4 overflow-hidden whitespace-nowrap"> {{ task.content }} </td>
+                <td class="p-4 overflow-hidden whitespace-nowrap"> {{ task.person_in_charge }} </td>
             </tr>
         </table>
     </div>    
