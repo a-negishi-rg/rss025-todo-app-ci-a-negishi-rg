@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import TaskList from "./pages/TaskList.vue";
 
 const routes = [
+    {
+      path: '/tasks', component: TaskList}
 ];
 
 const router = createRouter({
