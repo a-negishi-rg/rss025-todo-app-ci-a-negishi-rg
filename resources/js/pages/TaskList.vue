@@ -55,6 +55,6 @@ const tasks = ref([
 <style scoped>
 table {
     box-shadow: 5px 5px 13px var(--color-shadow-light),
-                -5px -5px 13px -2px var(--color-shadow-light) inset;
+                -5px -5px 13px -2px var(--color-shadow-dark) inset;
 }
 </style>
