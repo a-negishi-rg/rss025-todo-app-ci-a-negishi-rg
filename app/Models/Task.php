@@ -6,11 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    /**
-     *
-     *
-     * @var array<int, string>
-     */
+    // @var array<int, string>
     protected $fillable = [
         'title',
         'content',
