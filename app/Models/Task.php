@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    // @var array<int, string>
+    /**
+     * RSS025_TRAINING_PJ-58 一覧画面表示
+     * 
+     * @var array<int, string>
+     */
     protected $fillable = [
         'title',
         'content',
