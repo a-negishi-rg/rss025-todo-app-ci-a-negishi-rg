@@ -9,11 +9,11 @@ onMounted(()=>{
     getTasks();
 });
 
-const getTasks = async ()=>{
-    try{
+const getTasks = async () => {
+    try {
         const response = await axios.get(API_URL);
         tasks.value = response.data;
-    }catch(error){
+    } catch (error) {
         console.error('データの取得に失敗しました:', error);
     }
 }

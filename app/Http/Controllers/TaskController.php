@@ -13,12 +13,12 @@ class TaskController extends Controller
     // @return JsonResponse
     public function index(): JsonResponse
     {
-        try{
+        try {
             $tasks = Task::get();
             Log::debug($tasks);
-            return response() -> json($tasks);
+            return response()->json($tasks);
 
-        }catch(\Exception){
+        } catch (\Exception) {
             Log::error('データの取得に失敗しました。:');
         }
     }
