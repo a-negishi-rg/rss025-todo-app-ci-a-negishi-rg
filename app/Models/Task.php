@@ -9,7 +9,7 @@ class Task extends Model
     /**
      * RSS025_TRAINING_PJ-58 一覧画面表示
      * 
-     * @var array<int, string>
+     * @var array<string>
      */
     protected $fillable = [
         'title',
