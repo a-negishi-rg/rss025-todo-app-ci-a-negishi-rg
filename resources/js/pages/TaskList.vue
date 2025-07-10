@@ -1,32 +1,22 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { API_URL } from '../api/globalApi.js';
+import axios from 'axios';
 
-const tasks = ref([
-    {
-       id: 1,
-       title: "環境構築",
-       content: "これから実装するToDoの環境構築を行う。",
-       personInCharge: "田中 一郎"
-    },
-    {
-       id: 2,
-       title: "一覧画面",
-       content: "一覧画面の見た目（フロントエンド）と、DBからデータを取得する処理（バックエンド）を実装する。フロントではまず仮のデータでテーブル表示を実装し、その後、バックエンドが作成したAPIを呼び出して本物のデータに置き換える。最終的に、tasksテーブルに登録されている情報がブラウザに一覧表示される状態を目指す。",
-       personInCharge: "山田 太郎",
-    },
-    {
-       id: 3,
-       title: "登録画面",
-       content: "タスクを登録するための画面作成と、DBにデータを保存する登録処理を実装する。",
-       personInCharge: "佐藤 花子"
-    },
-    {
-       id: 4,
-       title: "バリデーション",
-       content: "タスク登録時、入力されたデータが要件を満たしているかチェックする検証処理（バリデーション）を実装する。",
-       personInCharge: "鈴木 次郎"
+const tasks = ref([]);
+
+onMounted(()=>{
+    getTasks();
+});
+
+const getTasks = async () => {
+    try {
+        const response = await axios.get(API_URL);
+        tasks.value = response.data;
+    } catch (error) {
+        console.error('データの取得に失敗しました:', error);
     }
-])
+}
 </script setup>
 
 <template>
@@ -45,11 +35,11 @@ const tasks = ref([
                     <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.id }}</td>
                     <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.title }}</td>
                     <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.content }}</td>
-                    <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.personInCharge }}</td>
+                    <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.person_in_charge }}</td>
                 </tr>
             </tbody>
         </table>
-    </div>    
+    </div>
 </template>
 
 <style scoped>
