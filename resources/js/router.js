@@ -4,12 +4,12 @@ import TaskCreate from "./pages/TaskCreate.vue";
 
 const routes = [
     {
-      path: '/:pathMatch(.*)*', 
+      path: '/:pathMatch(.*)*',
       component: TaskList
     },
     {
-      path: '/create', //パスどうする？
-      component: TaskCreate 
+      path: '/list/create',
+      component: TaskCreate
     }
 ];
 
