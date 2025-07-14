@@ -21,7 +21,6 @@ class TaskController extends Controller
         try {
             $tasks = Task::get();
             return response()->json($tasks);
-           
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json($e);
