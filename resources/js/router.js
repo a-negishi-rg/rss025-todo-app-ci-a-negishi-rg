@@ -8,7 +8,7 @@ const routes = [
       component: TaskList
     },
     {
-      path: '/list/create',
+      path: '/task/create',
       component: TaskCreate
     }
 ];
