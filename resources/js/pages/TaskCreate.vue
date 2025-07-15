@@ -10,7 +10,7 @@ import { useRouter } from 'vue-router';
 
 const title = ref("");
 const content = ref("");
-const person= ref("");
+const person = ref("");
 const router = useRouter();
 
 const {setFlashMessage} = useFlashMessage();
