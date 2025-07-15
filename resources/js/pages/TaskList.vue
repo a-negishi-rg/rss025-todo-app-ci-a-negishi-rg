@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { API_URL } from '../api/globalApi.js';
 import axios from 'axios';
+import FlashMessage from '../components/FlashMessage.vue';
 
 const tasks = ref([]);
 
@@ -20,6 +21,7 @@ const getTasks = async () => {
 </script setup>
 
 <template>
+    <FlashMessage />
     <div class="m-4">
         <table class="text-left table-fixed w-full">
             <thead>
