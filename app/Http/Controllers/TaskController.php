@@ -14,7 +14,6 @@ class TaskController extends Controller
 {
     /**
      * RSS025_TRAINING_PJ-58 一覧画面表示
-     * RSS025_TRAINING_PJ-60 登録処理作成
      * 
      * @return JsonResponse
      */
@@ -29,13 +28,18 @@ class TaskController extends Controller
         }
     }
 
+    /**
+     * RSS025_TRAINING_PJ-60 登録処理作成
+     * 
+     * @return JsonResponse
+     */
     public function save(Request $request)
     {
         DB::beginTransaction();
         try {
-            $newTask = Task::saveNewTask($request);
+            $new_task = Task::saveNewTask($request);
             DB::commit();
-            return response()->json($newTask, 200);
+            return response()->json($new_task, 200);
         } catch (Exception $e) {
             DB::rollback();
             Log::error("タスクの追加に失敗しました。:" . $e->getMessage());

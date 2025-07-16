@@ -8,7 +8,6 @@ class Task extends Model
 {
     /**
      * RSS025_TRAINING_PJ-58 一覧画面表示
-     * RSS025_TRAINING_PJ-60 登録処理作成
      * 
      * @var array<string>
      */
@@ -18,14 +17,20 @@ class Task extends Model
         'person_in_charge'
     ];
 
-    public static function saveNewTask ($newTask) {
-        $newTask = Task::create(
+    /**
+     * RSS025_TRAINING_PJ-60 登録処理作成
+     * 
+     * @param array $new_task
+     * @return Task
+     */
+    public static function saveNewTask ($new_task) {
+        $new_task = Task::create(
             [
-                'title' => $newTask->title,
-                'content' => $newTask->content,
-                'person_in_charge' => $newTask->person_in_charge
+                'title' => $new_task->title,
+                'content' => $new_task->content,
+                'person_in_charge' => $new_task->person_in_charge
             ]
         );
-        return $newTask;
+        return $new_task;
     }
 }
