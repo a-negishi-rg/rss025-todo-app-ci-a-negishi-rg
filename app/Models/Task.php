@@ -16,4 +16,21 @@ class Task extends Model
         'content',
         'person_in_charge'
     ];
+
+    /**
+     * RSS025_TRAINING_PJ-60 登録処理作成
+     * 
+     * @param array $new_task
+     * @return Task
+     */
+    public static function saveNewTask ($new_task) {
+        $new_task = Task::create(
+            [
+                'title' => $new_task->title,
+                'content' => $new_task->content,
+                'person_in_charge' => $new_task->person_in_charge
+            ]
+        );
+        return $new_task;
+    }
 }
