@@ -9,4 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/tasks', [TaskController::class, 'index']);
-Route::post('/tasks/submit', [TaskController::class, 'save']);
+Route::post('/tasks', [TaskController::class, 'save']);

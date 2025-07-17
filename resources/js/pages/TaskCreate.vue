@@ -17,7 +17,7 @@ const {setFlashMessage} = useFlashMessage();
 
 const submitTask = async () => {
     try{
-        await axios.post(`${API_URL}/submit`,{
+        await axios.post(API_URL,{
             'title':title.value,
             'content':content.value,
             'person_in_charge':person.value
