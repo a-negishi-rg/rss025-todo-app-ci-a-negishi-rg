@@ -31,9 +31,9 @@ const submitTask = async () => {
         } catch (error) {
             message.value = error.response.data.errors;
             status.value = error.response.status;
-            if(status.value == 422){
+            if (status.value == 422) {
                 setFlashMessage("入力欄を確認してください。", "error", false);
-            }else{
+            } else {
                 setFlashMessage("タスクの追加に失敗しました。", "error", false);
             }
         }
