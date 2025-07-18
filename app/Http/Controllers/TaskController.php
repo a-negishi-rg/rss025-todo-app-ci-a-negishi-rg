@@ -13,6 +13,8 @@ class TaskController extends Controller
 {
     /**
      * RSS025_TRAINING_PJ-58 一覧画面表示
+     * 
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {
