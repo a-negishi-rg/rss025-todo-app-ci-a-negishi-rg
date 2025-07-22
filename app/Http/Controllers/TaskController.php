@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\taskRequest;
+use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -13,6 +13,8 @@ class TaskController extends Controller
 {
     /**
      * RSS025_TRAINING_PJ-58 一覧画面表示
+     * 
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {
@@ -32,7 +34,7 @@ class TaskController extends Controller
      *
      * @return JsonResponse
      */
-    public function save(taskRequest $request)
+    public function save(TaskRequest $request)
     {
         DB::beginTransaction();
         try {
