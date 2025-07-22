@@ -16,7 +16,10 @@ class taskRequest extends FormRequest
 
     /**
      * バリデーションルール
+<<<<<<< Updated upstream
      *
+=======
+>>>>>>> Stashed changes
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
@@ -28,10 +31,18 @@ class taskRequest extends FormRequest
         ];
     }
 
+<<<<<<< Updated upstream
     /**
      * エラーメッセージ
      */
     public function attributes(): array
+=======
+     /**
+     * エラーメッセージ
+     * @return array
+     */
+      public function attributes(): array
+>>>>>>> Stashed changes
     {
         return [
             'title' => 'タイトル', // 'title' フィールドを「タイトル」と表示
