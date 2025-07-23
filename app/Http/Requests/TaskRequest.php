@@ -27,7 +27,7 @@ class TaskRequest extends FormRequest
         ];
     }
 
-     /**
+    /**
      * エラーメッセージ
      * @return array
      */
