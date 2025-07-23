@@ -1,12 +1,10 @@
 <script setup>
 import { ref } from 'vue';
-
 import { API_URL } from '../api/globalApi';
 import axios from 'axios';
 import FlashMessage from '../components/FlashMessage.vue';
 import { useFlashMessage } from '../composables/useFlashMessage.js';
 import { useRouter } from 'vue-router'; 
-
 
 const title = ref("");
 const content = ref("");
@@ -17,26 +15,26 @@ const status = ref({});
 const {setFlashMessage} = useFlashMessage();
 
 const submitTask = async () => {
-        try {
-            await axios.post(API_URL,{
-                'title':title.value,
-                'content':content.value,
-                'person_in_charge':person.value
-            });
-            setFlashMessage("タスクが正常に追加されました。", "success", true);
-            title.value = "";
-            content.value = "";
-            person.value = "";
-            router.push("/tasks");
-        } catch (error) {
-            message.value = error.response.data.errors;
-            status.value = error.response.status;
-            if (status.value == 422) {
-                setFlashMessage("入力欄を確認してください。", "error", false);
-            } else {
-                setFlashMessage("タスクの追加に失敗しました。", "error", false);
-            }
+    try {
+        await axios.post(API_URL,{
+            'title':title.value,
+            'content':content.value,
+            'person_in_charge':person.value
+        });
+        setFlashMessage("タスクが正常に追加されました。", "success", true);
+        title.value = "";
+        content.value = "";
+        person.value = "";
+        router.push("/tasks");
+    }catch (error) {
+        message.value = error.response.data.errors;
+        status.value = error.response.status;
+        if(status.value == 422){
+            setFlashMessage("入力欄を確認してください。", "error", false);
+        }else{
+            setFlashMessage("タスクの追加に失敗しました。", "error", false);
         }
+    }
 }
 </script>
 
