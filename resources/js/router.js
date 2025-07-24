@@ -1,15 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import TaskList from "./pages/TaskList.vue";
 import TaskCreate from "./pages/TaskCreate.vue";
+import TaskShow from "./pages/TaskShow.vue";
 
 const routes = [
     {
-      path: '/:pathMatch(.*)*',
+      path: '/tasks', //ワイルドカードが邪魔をするのでパス変更
       component: TaskList
     },
     {
-      path: '/task/create',
+      path: '/tasks/create',
       component: TaskCreate
+    },
+    {
+      path: '/tasks/show/:id',
+      component: TaskShow,
+      props: true
     }
 ];
 
