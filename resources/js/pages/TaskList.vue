@@ -6,7 +6,7 @@ import FlashMessage from '../components/FlashMessage.vue';
 
 const tasks = ref([]);
 
-onMounted(()=>{
+onMounted(() => {
     getTasks();
 });
 

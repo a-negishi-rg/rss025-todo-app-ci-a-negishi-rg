@@ -9,7 +9,7 @@ const props = defineProps({
 });
 const task = ref([]);
 
-onMounted(()=>{
+onMounted(() => {
     getTasks();
 });
 
@@ -26,16 +26,16 @@ const getTasks = async () => {
 <template>
     <div class="max-w-xs mx-auto item-center">
         <label class="block text-xs text-gray-600 font-medium mt-4">タイトル</label>
-        <input :value="task.title" readonly class="w-full border rounded-lg py-2 px-4">
+        <input :value="task.title" readonly class="w-full border rounded-lg py-2 px-4 focus:outline-none">
     </div>
     <div class="max-w-xs mx-auto item-center">
         <label class="block text-xs text-gray-600 font-medium mt-4">内容</label>
-        <textarea :value="task.content" readonly class="w-full border rounded-lg py-2 px-4">
+        <textarea :value="task.content" readonly class="w-full border rounded-lg py-2 px-4 focus:outline-none">
         </textarea>
     </div>
     <div class="max-w-xs mx-auto item-center">
         <label class="block text-xs text-gray-600 font-medium mt-4">担当者</label>
-        <input :value="task.person_in_charge" readonly class="w-full border rounded-lg py-2 px-4">
+        <input :value="task.person_in_charge" readonly class="w-full border rounded-lg py-2 px-4 focus:outline-none">
     </div>
     <div class="flex justify-center">
         <Button name="戻る" link="/tasks" class="block text-center w-xs mt-4 cursor-pointer"/>

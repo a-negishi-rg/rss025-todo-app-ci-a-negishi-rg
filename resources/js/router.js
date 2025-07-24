@@ -5,7 +5,7 @@ import TaskShow from "./pages/TaskShow.vue";
 
 const routes = [
     {
-      path: '/tasks', //ワイルドカードが邪魔をするのでパス変更
+      path: '/tasks',
       component: TaskList
     },
     {

@@ -54,13 +54,14 @@ class TaskController extends Controller
     /**
      * RSS025_TRAINING_PJ-271 詳細画面作成
      * 
+     * @param int $id
      * @return JsonResponse
      */
     public function show(int $id): JsonResponse
     {
         try {
             $task = Task::findOrFail($id);
-            
+
             return response()->json($task);
         } catch (ModelNotFoundException $e) {
             Log::error('該当のタスクが見つかりません。:'.$e->getMessage());
