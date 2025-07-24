@@ -64,7 +64,7 @@ class TaskController extends Controller
 
             return response()->json($task);
         } catch (ModelNotFoundException $e) {
-            Log::error('該当のタスクが見つかりません。:'.$e->getMessage());
+            Log::warning('該当のタスクが見つかりません。:'.$e->getMessage());
 
             return response()->json($e, 404);
         } catch (Exception $e) {
