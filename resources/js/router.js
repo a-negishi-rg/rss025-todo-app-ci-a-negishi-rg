@@ -9,11 +9,11 @@ const routes = [
       component: TaskList
     },
     {
-      path: '/tasks/create',
+      path: '/task/create',
       component: TaskCreate
     },
     {
-      path: '/tasks/show/:id',
+      path: '/task/show/:id',
       component: TaskShow,
       props: true
     }
