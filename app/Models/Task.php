@@ -40,7 +40,7 @@ class Task extends Model
      * RSS025_TRAINING_PJ-717 編集画面作成
      *
      * @param  array  $update_task
-     * @param String $id
+     * @param int $id
      * @return Task
      */
     public static function updateTask($id, $request)
