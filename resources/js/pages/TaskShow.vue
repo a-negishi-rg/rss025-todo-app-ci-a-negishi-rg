@@ -5,7 +5,7 @@ import axios from 'axios';
 import Button from '../components/Button.vue';
 
 const props = defineProps({
-    id: Number,
+    id: String,
 });
 const task = ref([]);
 

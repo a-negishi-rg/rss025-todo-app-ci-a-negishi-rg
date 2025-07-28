@@ -10,5 +10,7 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/tasks', [TaskController::class, 'index']);
 Route::get('/tasks/show/{id}', [TaskController::class, 'show']);
+Route::get('/tasks/edit/{id}', [TaskController::class, 'show']);
+Route::put('/tasks/update/{id}', [TaskController::class, 'update']);
 Route::post('/tasks', [TaskController::class, 'save']);
 
