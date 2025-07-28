@@ -83,7 +83,7 @@ class TaskController extends Controller
     {
         try {
             DB::beginTransaction();
-            $update_task = Task::updateNewTask($id, $request);
+            $update_task = Task::updateTask($id, $request);
             DB::commit();
 
             return response()->json($update_task, 200);
