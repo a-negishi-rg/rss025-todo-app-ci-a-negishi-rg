@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TaskController extends Controller
 {
@@ -20,7 +21,7 @@ class TaskController extends Controller
     {
         try {
             $tasks = Task::get();
-
+            
             return response()->json($tasks);
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -36,8 +37,8 @@ class TaskController extends Controller
      */
     public function save(TaskRequest $request)
     {
-        DB::beginTransaction();
         try {
+            DB::beginTransaction();
             $new_task = Task::saveNewTask($request);
             DB::commit();
 
@@ -45,6 +46,29 @@ class TaskController extends Controller
         } catch (Exception $e) {
             DB::rollback();
             Log::error('タスクの追加に失敗しました。:'.$e->getMessage());
+
+            return response()->json($e, 500);
+        }
+    }
+
+    /**
+     * RSS025_TRAINING_PJ-271 詳細画面作成
+     * 
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function show(int $id): JsonResponse
+    {
+        try {
+            $task = Task::findOrFail($id);
+
+            return response()->json($task, 200);
+        } catch (ModelNotFoundException $e) {
+            Log::warning('該当のタスクが見つかりません。:'.$e->getMessage());
+
+            return response()->json($e, 404);
+        } catch (Exception $e) {
+            Log::error('タスク詳細の取得に失敗しました。:'.$e->getMessage());
 
             return response()->json($e, 500);
         }
