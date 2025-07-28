@@ -37,8 +37,8 @@ class TaskController extends Controller
      */
     public function save(TaskRequest $request)
     {
-        DB::beginTransaction();
         try {
+            DB::beginTransaction();
             $new_task = Task::saveNewTask($request);
             DB::commit();
 
@@ -62,7 +62,7 @@ class TaskController extends Controller
         try {
             $task = Task::findOrFail($id);
 
-            return response()->json($task);
+            return response()->json($task, 200);
         } catch (ModelNotFoundException $e) {
             Log::warning('該当のタスクが見つかりません。:'.$e->getMessage());
 

@@ -42,7 +42,7 @@ const getTasks = async () => {
                     <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.content }}</td>
                     <td class="p-4 overflow-hidden whitespace-nowrap">{{ task.person_in_charge }}</td>
                     <td class="w-1/10">
-                        <RouterLink :to="`/tasks/show/${ task.id }`" class="inline-flex items-center m-2 px-4 py-2 bg-white text-xs font-medium shadow-sm border border-[var(--color-input-border)] rounded-md hover:bg-gray-200 active:outline-offset-1 active:outline-2 active:outline-[var(--color-accent)]">
+                        <RouterLink :to="`/task/show/${ task.id }`" class="inline-flex items-center m-2 px-4 py-2 bg-white text-xs font-medium shadow-sm border border-[var(--color-input-border)] rounded-md hover:bg-gray-200 active:outline-offset-1 active:outline-2 active:outline-[var(--color-accent)]">
                             詳細
                         </RouterLink>
                     </td>
