@@ -24,7 +24,7 @@ const getTasks = async () => {
 }
 
 const deleteTask = async (id) => {
-    if(window.confirm('本当にこのタスクを削除してもよろしいですか？')){
+    if (window.confirm('本当にこのタスクを削除してもよろしいですか？')){
         try {
             await axios.post(`${API_URL}/delete/${id}`);
             setFlashMessage("タスクが正常に削除されました。", "success", false);
