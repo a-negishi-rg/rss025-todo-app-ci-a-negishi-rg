@@ -69,8 +69,7 @@ class Task extends Model
      */
     public static function deleteTask($id)
     {
-        $delete_task = Task::query()
-        ->where('id', $id)
+        $delete_task = Task::findOrFail($id)
         ->delete();
 
         return $delete_task;
