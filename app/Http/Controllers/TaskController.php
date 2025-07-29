@@ -77,6 +77,7 @@ class TaskController extends Controller
     /**
      * RSS025_TRAINING_PJ-717 編集画面作成
      *
+     * @param int $id
      * @return JsonResponse
      */
     public function update($id, TaskRequest $request)
@@ -90,6 +91,29 @@ class TaskController extends Controller
         } catch (Exception $e) {
             DB::rollback();
             Log::error('タスクの編集に失敗しました。:'.$e->getMessage());
+
+            return response()->json($e, 500);
+        }
+    }
+
+    /**
+     * RSS025_TRAINING_PJ-718 削除処理作成
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function delete($id)
+    {
+        // throw new Exception ("error");
+        try {
+            DB::beginTransaction();
+            $delete_task = Task::deleteTask($id);
+            DB::commit();
+
+            return response()->json($delete_task, 200);
+        } catch (Exception $e) {
+            DB::rollback();
+            Log::error('タスクの削除に失敗しました。:'.$e->getMessage());
 
             return response()->json($e, 500);
         }

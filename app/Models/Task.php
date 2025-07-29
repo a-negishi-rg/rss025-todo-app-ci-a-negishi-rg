@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     /**
      * RSS025_TRAINING_PJ-58 一覧画面表示
      *
@@ -55,5 +60,20 @@ class Task extends Model
         );
 
         return $update_task;
+    }
+
+    /**
+     * RSS025_TRAINING_PJ-718 削除処理作成
+     *
+     * @param int $id
+     * @return Task
+     */
+    public static function deleteTask($id)
+    {
+        $delete_task = Task::query()
+        ->where('id', $id)
+        ->delete();
+
+        return $delete_task;
     }
 }
