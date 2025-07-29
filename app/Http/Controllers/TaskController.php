@@ -113,7 +113,7 @@ class TaskController extends Controller
             return response()->json($delete_task, 200);
         } catch (Exception $e) {
             DB::rollback();
-            Log::error('タスクの削除に失敗しました。:'.$e->getMessage());
+            Log::error('タスクの削除に失敗しました。: '.$e->getMessage());
 
             return response()->json($e, 500);
         }

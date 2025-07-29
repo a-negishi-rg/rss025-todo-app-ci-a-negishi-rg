@@ -7,10 +7,8 @@ import { useFlashMessage } from '../composables/useFlashMessage.js';
 import Pencil from '../components/icons/Pencil.vue';
 import Trash from '../components/icons/Trash.vue';
 
-
 const tasks = ref([]);
 const {setFlashMessage} = useFlashMessage();
-
 
 onMounted(() => {
     getTasks();
