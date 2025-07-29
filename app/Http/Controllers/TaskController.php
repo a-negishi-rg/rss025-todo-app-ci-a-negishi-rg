@@ -14,7 +14,7 @@ class TaskController extends Controller
 {
     /**
      * RSS025_TRAINING_PJ-58 一覧画面表示
-     * 
+     *
      * @return JsonResponse
      */
     public function index(): JsonResponse
@@ -53,7 +53,7 @@ class TaskController extends Controller
 
     /**
      * RSS025_TRAINING_PJ-271 詳細画面作成
-     * 
+     *
      * @param int $id
      * @return JsonResponse
      */
@@ -69,6 +69,29 @@ class TaskController extends Controller
             return response()->json($e, 404);
         } catch (Exception $e) {
             Log::error('タスク詳細の取得に失敗しました。:'.$e->getMessage());
+
+            return response()->json($e, 500);
+        }
+    }
+
+    /**
+     * RSS025_TRAINING_PJ-717 編集画面作成
+     *
+     * @param int $id
+     * @param TaskRequest $request
+     * @return JsonResponse
+     */
+    public function update($id, TaskRequest $request)
+    {
+        try {
+            DB::beginTransaction();
+            $update_task = Task::updateTask($id, $request);
+            DB::commit();
+
+            return response()->json($update_task, 200);
+        } catch (Exception $e) {
+            DB::rollback();
+            Log::error('タスクの編集に失敗しました。:'.$e->getMessage());
 
             return response()->json($e, 500);
         }

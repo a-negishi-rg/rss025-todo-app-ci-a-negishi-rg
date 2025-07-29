@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import TaskList from "./pages/TaskList.vue";
 import TaskCreate from "./pages/TaskCreate.vue";
 import TaskShow from "./pages/TaskShow.vue";
+import TaskEdit from "./pages/TaskEdit.vue";
 
 const routes = [
     {
@@ -15,6 +16,11 @@ const routes = [
     {
       path: '/task/show/:id',
       component: TaskShow,
+      props: true
+    },
+    {
+      path: '/task/edit/:id',
+      component: TaskEdit,
       props: true
     }
 ];

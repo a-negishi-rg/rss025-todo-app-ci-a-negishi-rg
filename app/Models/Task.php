@@ -35,4 +35,26 @@ class Task extends Model
 
         return $new_task;
     }
+
+    /**
+     * RSS025_TRAINING_PJ-717 編集画面作成
+     *
+     * @param array $request
+     * @param int $id
+     * @return Task
+     */
+    public static function updateTask($id, $request)
+    {
+        $update_task = Task::query()
+        ->where('id', $id)
+        ->update(
+            [
+                'title' => $request->title,
+                'content' => $request->content,
+                'person_in_charge' => $request->person_in_charge,
+            ]
+        );
+
+        return $update_task;
+    }
 }
