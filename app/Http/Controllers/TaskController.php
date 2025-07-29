@@ -78,6 +78,7 @@ class TaskController extends Controller
      * RSS025_TRAINING_PJ-717 編集画面作成
      *
      * @param int $id
+     * @param TaskRequest $request
      * @return JsonResponse
      */
     public function update($id, TaskRequest $request)

@@ -39,7 +39,7 @@ class Task extends Model
     /**
      * RSS025_TRAINING_PJ-717 編集画面作成
      *
-     * @param  array  $update_task
+     * @param array $update_task
      * @param int $id
      * @return Task
      */
