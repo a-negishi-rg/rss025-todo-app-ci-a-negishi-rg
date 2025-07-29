@@ -9,8 +9,6 @@ class Task extends Model
 {
     use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
-
     /**
      * RSS025_TRAINING_PJ-58 一覧画面表示
      *
