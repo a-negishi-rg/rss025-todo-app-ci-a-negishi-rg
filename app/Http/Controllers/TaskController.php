@@ -105,7 +105,6 @@ class TaskController extends Controller
      */
     public function delete($id)
     {
-        // throw new Exception ("error");
         try {
             DB::beginTransaction();
             $delete_task = Task::deleteTask($id);
