@@ -44,10 +44,11 @@ class Task extends Model
     /**
      * RSS025_TRAINING_PJ-717 編集画面作成
      *
-     * @param  array  $update_task
+     * @param array $request
+     * @param int $id
      * @return Task
      */
-    public static function updateNewTask($id, $request)
+    public static function updateTask($id, $request)
     {
         $update_task = Task::query()
         ->where('id', $id)

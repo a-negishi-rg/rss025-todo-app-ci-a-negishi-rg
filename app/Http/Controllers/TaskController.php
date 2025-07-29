@@ -78,13 +78,14 @@ class TaskController extends Controller
      * RSS025_TRAINING_PJ-717 編集画面作成
      *
      * @param int $id
+     * @param TaskRequest $request
      * @return JsonResponse
      */
     public function update($id, TaskRequest $request)
     {
         try {
             DB::beginTransaction();
-            $update_task = Task::updateNewTask($id, $request);
+            $update_task = Task::updateTask($id, $request);
             DB::commit();
 
             return response()->json($update_task, 200);
