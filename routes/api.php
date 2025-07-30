@@ -13,4 +13,5 @@ Route::get('/tasks/show/{id}', [TaskController::class, 'show']);
 Route::get('/tasks/edit/{id}', [TaskController::class, 'show']);
 Route::put('/tasks/update/{id}', [TaskController::class, 'update']);
 Route::post('/tasks', [TaskController::class, 'save']);
+Route::post('/tasks/delete/{id}', [TaskController::class, 'delete']);
 

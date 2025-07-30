@@ -3,9 +3,12 @@ import { onMounted, ref } from 'vue';
 import { API_URL } from '../api/globalApi.js';
 import axios from 'axios';
 import FlashMessage from '../components/FlashMessage.vue';
+import { useFlashMessage } from '../composables/useFlashMessage.js';
 import Pencil from '../components/icons/Pencil.vue';
+import Trash from '../components/icons/Trash.vue';
 
 const tasks = ref([]);
+const {setFlashMessage} = useFlashMessage();
 
 onMounted(() => {
     getTasks();
@@ -19,7 +22,19 @@ const getTasks = async () => {
         console.error('データの取得に失敗しました:', error);
     }
 }
-</script setup>
+
+const deleteTask = async (id) => {
+    if (window.confirm('本当にこのタスクを削除してもよろしいですか？')){
+        try {
+            await axios.post(`${API_URL}/delete/${id}`);
+            setFlashMessage("タスクが正常に削除されました。", "success", false);
+            getTasks();
+        } catch (error) {
+            setFlashMessage("タスクの削除に失敗しました。", "error", false);
+        }
+    };
+}
+</script>
 
 <template>
     <FlashMessage />
@@ -33,6 +48,7 @@ const getTasks = async () => {
                     <th class="p-4 overflow-hidden whitespace-nowrap">担当者</th>
                     <th class="p-4 w-1/10">詳細</th>
                     <th class="p-4 w-1/10">編集</th>
+                    <th class="p-4 w-1/10">削除</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +67,12 @@ const getTasks = async () => {
                             <span class="w-4 h-4 mr-1"><Pencil /></span>
                             編集
                         </RouterLink>
+                    </td>
+                    <td class="w-1/10">
+                        <button @click="deleteTask(task.id)" class="inline-flex items-center m-2 px-4 py-2 bg-[var(--color-error)] text-xs text-white font-medium shadow-sm border border-[var(--color-error)] rounded-md hover:bg-[#c7310a] active:outline-offset-1 active:outline-2 active:outline-[#c7310a] cursor-pointer">
+                            <span class="w-4 h-4 mr-1"><Trash /></span>
+                            削除
+                        </button>
                     </td>
                 </tr>
             </tbody>

@@ -96,4 +96,26 @@ class TaskController extends Controller
             return response()->json($e, 500);
         }
     }
+
+    /**
+     * RSS025_TRAINING_PJ-718 削除処理作成
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function delete($id)
+    {
+        try {
+            DB::beginTransaction();
+            $delete_task = Task::deleteTask($id);
+            DB::commit();
+
+            return response()->json($delete_task, 200);
+        } catch (Exception $e) {
+            DB::rollback();
+            Log::error('タスクの削除に失敗しました。: '.$e->getMessage());
+
+            return response()->json($e, 500);
+        }
+    }
 }

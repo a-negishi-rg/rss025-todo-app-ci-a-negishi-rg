@@ -27,9 +27,9 @@ const submitTask = async () => {
         person.value = "";
         router.push("/tasks");
     }catch (error) {
-        message.value = error.response.data.errors;
         status.value = error.response.status;
         if(status.value == 422){
+            message.value = error.response.data.errors;
             setFlashMessage("入力欄を確認してください。", "error", false);
         }else{
             setFlashMessage("タスクの追加に失敗しました。", "error", false);
