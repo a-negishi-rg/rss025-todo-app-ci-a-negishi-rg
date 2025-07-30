@@ -23,7 +23,7 @@ class Task extends Model
     /**
      * RSS025_TRAINING_PJ-60 登録処理作成
      *
-     * @param  array  $new_task
+     * @param array $new_task
      * @return Task
      */
     public static function saveNewTask($new_task)
