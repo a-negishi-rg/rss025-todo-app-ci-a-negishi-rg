@@ -5,23 +5,21 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TaskController extends Controller
 {
     /**
      * RSS025_TRAINING_PJ-58 一覧画面表示
-     *
-     * @return JsonResponse
      */
     public function index(): JsonResponse
     {
         try {
             $tasks = Task::get();
-            
+
             return response()->json($tasks);
         } catch (Exception $e) {
             Log::error($e->getMessage());
@@ -53,9 +51,6 @@ class TaskController extends Controller
 
     /**
      * RSS025_TRAINING_PJ-271 詳細画面作成
-     *
-     * @param int $id
-     * @return JsonResponse
      */
     public function show(int $id): JsonResponse
     {
@@ -77,8 +72,7 @@ class TaskController extends Controller
     /**
      * RSS025_TRAINING_PJ-717 編集画面作成
      *
-     * @param int $id
-     * @param TaskRequest $request
+     * @param  int  $id
      * @return JsonResponse
      */
     public function update($id, TaskRequest $request)
@@ -100,7 +94,7 @@ class TaskController extends Controller
     /**
      * RSS025_TRAINING_PJ-718 削除処理作成
      *
-     * @param int $id
+     * @param  int  $id
      * @return JsonResponse
      */
     public function delete($id)

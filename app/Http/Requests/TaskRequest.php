@@ -16,6 +16,7 @@ class TaskRequest extends FormRequest
 
     /**
      * バリデーションルール
+     *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
@@ -29,9 +30,8 @@ class TaskRequest extends FormRequest
 
     /**
      * エラーメッセージ
-     * @return array
      */
-      public function attributes(): array
+    public function attributes(): array
     {
         return [
             'title' => 'タイトル',
