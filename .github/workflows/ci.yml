@@ -1,0 +1,46 @@
+# .github/workflows/ci.yml の内容
+
+# ワークフローの名前
+name: CI
+
+# このワークフローが実行されるタイミングを指定
+# "on: [push]" は、どのブランチであれ push されたときに実行される、という意味
+on: [push]
+
+# 実行する具体的な処理（ジョブ）を定義
+jobs:
+  # "pint-check" という名前のジョブ（名前は自由につけられます）
+  test:
+    # ジョブを実行する仮想環境上の OS を指定
+    runs-on: ubuntu-latest
+
+    # ジョブの中の具体的な手順を定義
+    steps:
+      # リポジトリのソースコードを仮想環境上にクローンする
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # PHPを使えるようにセットアップする
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2' # プロジェクトのPHPバージョンに合わせて変更しましょう
+          extensions: dom, curl, mbstring
+          coverage: none
+
+      # 依存関係をインストールする
+      # composer.json ファイルに基づいて、Pint などのツールをインストールします
+      - name: Install Dependencies
+        run: composer install --prefer-dist --no-progress
+
+      # Pint を実行してコードスタイルをチェックする
+      # "--test" オプションを付けることで、ファイルを変更せず、
+      # 整形が必要な箇所があるかどうかだけをチェックします。
+      # もし整形が必要なファイルがあれば、このステップは失敗（エラー）となります。
+      - name: Run formatter
+        run: ./vendor/bin/pint --test
+        
+        # Larastan を実行してリンタエラーが出ていないかチェックする
+      - name: Run linter
+        run: ./vendor/bin/phpstan analyse --memory-limit=2G
+        
