@@ -1,7 +1,7 @@
 <?php
 
 namespace Tests\Feature;
-use App\Models\Task;
+
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -26,9 +26,9 @@ class ExampleTest extends TestCase
     {
         // 準備: 登録するデータ
         $data = [
-            'title' => "テスト",
-            'content' => "テスト",
-            'person_in_charge' =>"テスト" 
+            'title' => 'テスト',
+            'content' => 'テスト',
+            'person_in_charge' => 'テスト',
         ];
 
         // 実行: APIエンドポイントへPOSTリクエスト
@@ -50,9 +50,9 @@ class ExampleTest extends TestCase
     {
         // 準備: 登録するデータ
         $data = [
-            'title' => " ",
-            'content' => "テスト",
-            'person_in_charge' =>"テスト" 
+            'title' => ' ',
+            'content' => 'テスト',
+            'person_in_charge' => 'テスト',
         ];
 
         // 実行: APIエンドポイントへPOSTリクエスト
@@ -64,7 +64,4 @@ class ExampleTest extends TestCase
         // 2. レスポンスJSONに 'title' フィールドのエラーが含まれていること
         $response->assertJsonValidationErrors(['title']);
     }
-
-    
 }
-
